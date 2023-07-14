@@ -1,0 +1,57 @@
+<%- include ('../partials/_header.ejs') %>
+
+    <h1>Información de citas médicas</h1>
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>No.Cita</th>
+                        <th>Id Paciente</th>
+                        <th>Id Doctor</th>
+                        <th>Nombre Paciente</th>
+                        <th>Nombre Doctor</th>
+                        <th>Especialidad</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <% if (dataList=0) { %>
+                        <% for (var i=0; i < dataList.length; i++) {%> 
+                            <tr>
+                                <td><%=(i+1)%></td>
+                                <td><%=dataList[i].id_paciente %></td>
+                                <td><%=dataList[i].id_doctor %></td>
+                                <td><%=dataList[i].nombre_paciente %></td>
+                                <td><%=dataList[i].nombre_doctor %></td>
+                                <td><form action="#">
+                                        <label for="esp">Especialidad</label>
+                                            <select name="especialidades" id="esp">
+                                                <option value="medicinaGeneral">Medicina general</option>
+                                                <option value="cardiologia">Cardiología</option>
+                                                <option value="medicinaInterna">Medicina interna</option>
+                                                <option value="dermatologia">Dermatología</option>
+                                                <option value="rehabilitacion">Rehabilitación física</option>
+                                                <option value="psicologia">Psicología</option>
+                                                <option value="odontologia">Odontología</option>
+                                                <option value="radiologia">Radiología</option>
+                                            </select>                                    
+                                    </form>
+                                    <%=dataList[i].especialidad %></td>
+                                <td><%=dataList[i].fecha_cita %></td>
+                                <td><%=dataList[i].hora_cita %></td>
+                                <td>
+                                    <a href="cita/delete/<%= dataList[i].id_cita %>" class="btn btn-danger">Eliminar</a>
+                                    <a href="cita/update/<%= dataList[i].id_cita %>" class="btn btn-info">Modificar</a>
+                                </td>
+                            </tr>
+                        <%} %>
+                    <%} %>
+                </tbody>
+            </table>    
+        </div>  
+    
+<%- include ('../partials/_footer.ejs') %>

@@ -1,0 +1,76 @@
+<%- include ('../partials/_header.ejs') %>
+
+    <h1>Información de pacientes</h1>
+
+ 
+            <div class="row mt-5">
+                <div class="col-md-7">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Cédula</th>
+                                <th>Edad</th>
+                                <th>Teléfono</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            <% if (dataList=0) { %>
+                                <% for (var i=0; i < dataList.length; i++) {%> 
+                                    <tr>
+                                        <td><%=(i+1)%></td>
+                                        <td><%=dataList[i].nombre %></td>
+                                        <td><%=dataList[i].apellidos %></td>
+                                        <td><%=dataList[i].num_cedula %></td>
+                                        <td><%=dataList[i].edad %></td>
+                                        <td><%=dataList[i].telefono %></td>
+                                        <td>
+                                            <a href="paciente/delete/<%= dataList[i].id_paciente %>" class="btn btn-danger">Eliminar</a>
+                                            <a href="paciente/update/<%= dataList[i].id_paciente %>" class="btn btn-info">Modificar</a>
+                                        </td>
+                                    </tr>
+                                <%} %>
+                            <%} %>
+    
+    
+                        </tbody>
+                    </table>    
+                </div>
+            
+
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="post">
+                            <div class="form-group">
+                                <input type="text" name="nombre" placeholder="Nombre" class="form-control">  
+                            </div>
+                            <div class="form-group">    
+                                <input type="text" name="apellidos" placeholder="Apellidos" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="num_cedula" placeholder="Número de identificación" class="form-control">
+                            </div>
+                            <div class="form-group">        
+                                <input type="text" name="edad" placeholder="Edad" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="telefono" placeholder="Teléfono celular" class="form-control">     
+                            </div>
+                            <button type = "submit" class="btn btn-primary">
+                                Guardar Paciente
+                            </button>
+                        </form>
+                    </div>    
+                </div> 
+            </div>               
+        </div>
+    
+
+   
+
+<%- include ('../partials/_footer.ejs') %>

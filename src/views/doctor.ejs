@@ -1,0 +1,50 @@
+<%- include ('../partials/_header.ejs') %>
+
+    <h1>Información de doctores</h1>
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Especialidad</th>
+                        <th>Consultorio</th>
+                        <th>Email</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <% if (dataList=0) { %>
+                        <% for (var i=0; i < dataList.length; i++) {%> 
+                            <tr>
+                                <td><%=(i+1)%></td>
+                                <td><%=dataList[i].nombre %></td>
+                                <td><%=dataList[i].apellidos %></td>
+                                <td>
+                                    <form action="#">
+                                        <label for="esp">Especialidad</label>
+                                        <select name="especialidades" id="esp">
+                                            <option value="medicinaGeneral">Medicina general</option>
+                                            <option value="cardiologia">Cardiología</option>
+                                            <option value="medicinaInterna">Medicina interna</option>
+                                            <option value="dermatologia">Dermatología</option>
+                                            <option value="rehabilitacion">Rehabilitación física</option>
+                                            <option value="psicologia">Psicología</option>
+                                            <option value="odontologia">Odontología</option>
+                                            <option value="radiologia">Radiología</option>
+                                        </select>                                    
+                                    </form>
+                                    <%=dataList[i].especialidad %></td>
+                                <td><%=dataList[i].consultorio %></td>
+                                <td><%=dataList[i].email %></td>
+                                <td>
+                                    <a href="doctor/delete/<%= dataList[i].id_doctor %>" class="btn btn-danger">Eliminar</a>
+                                    <a href="doctor/update/<%= dataList[i].id_doctor %>" class="btn btn-info">Modificar</a>
+                                </td>
+                            </tr>
+                        <%} %>
+                    <%} %>
+<%- include ('../partials/_footer.ejs') %>

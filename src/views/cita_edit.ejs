@@ -1,0 +1,45 @@
+<%- include ('../partials/_header.ejs') %>
+    <h1>Actualizar información de citas</h1>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="cita/update/<%= data.id_cita %>" method="post">
+                                <div class="form-group">
+                                    <input type="text" name="nombre_paciente" value="<%= data.nombre_paciente %>" class="form-control">  
+                                </div>
+                                <div class="form-group">    
+                                    <input type="text" name="nombre_doctor" value="<%= data.nombre_doctor %>" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <form action="#">
+                                        <label for="esp">Especialidad</label>
+                                        <select name="especialidades" id="esp">
+                                          <option value="medicinaGeneral">Medicina general</option>
+                                          <option value="cardiologia">Cardiología</option>
+                                          <option value="medicinaInterna">Medicina interna</option>
+                                          <option value="dermatologia">Dermatología</option>
+                                          <option value="rehabilitacion">Rehabilitación física</option>
+                                          <option value="psicologia">Psicología</option>
+                                          <option value="odontologia">Odontología</option>
+                                          <option value="radiologia">Radiología</option>
+                                        </select>                                    
+                                  </form>            
+                                </div>
+                                <div class="form-group">        
+                                    <input type="text" name="fecha_cita" value="<%=data.fecha_cita %>" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="hora_cita" value="<%=data.hora_cita %>" class="form-control">     
+                                </div>
+                                <button type = "submit" value="Enviar" class="btn btn-primary">
+                                    Actualizar datos
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<%- include ('../partials/_footer.ejs') %>
